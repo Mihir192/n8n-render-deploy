@@ -3,18 +3,39 @@ services:
     name: n8n
     env: docker
     plan: free
-    autoDeploy: true
-    dockerfilePath: ./Dockerfile
+    region: oregon
     envVars:
+      - key: DB_TYPE
+        value: postgresdb
+      - key: DB_POSTGRESDB
+        value: n8n_db_opym
+      - key: DB_POSTGRESUSER
+        value: n8n_db_opym_user
+      - key: DB_POSTGRESPASSWORD
+        value: wxQiQjmfiFZU8Nqp8usPnNpqBCP4WNvd
+      - key: DB_POSTGRESHOST
+        value: dpg-d0aotchr0fns73coqui0-a
+      - key: DB_POSTGRESPORT
+        value: 5432
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
       - key: N8N_BASIC_AUTH_USER
         value: admin
       - key: N8N_BASIC_AUTH_PASSWORD
-        value: admin123
+        value: your_password_here
+      - key: N8N_ENCRYPTION_KEY
+        value: your_32_char_key_here
       - key: N8N_HOST
-        value: n8n.onrender.com
-      - key: WEBHOOK_URL
-        value: https://n8n.onrender.com/
+        value: your-n8n-service.onrender.com
       - key: N8N_PORT
         value: 5678
+      - key: N8N_PROTOCOL
+        value: https
+      - key: N8N_SKIP_WEBHOOK_DEREGISTRATION_SHUTDOWN
+        value: "true"
+      - key: N8N_DIAGNOSTICS_ENABLED
+        value: "false"
+      - key: N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS
+        value: "true"
+      - key: N8N_RUNNERS_ENABLED
+        value: "true"
